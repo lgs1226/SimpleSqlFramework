@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private IBaseDao<User> userHelper;
     private IBaseDao<FileBean>  fileHelper;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

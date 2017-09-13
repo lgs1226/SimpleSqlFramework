@@ -42,7 +42,7 @@ public class BaseDao<T> implements IBaseDao<T>{
             this.entityClazz = entity;
             this.sqLiteDatabase = sqLiteDatabase;
             if (entityClazz.getAnnotation(DbTable.class) == null){
-                tableName = entityClazz.getClass().getSimpleName();
+                tableName = entityClazz.getSimpleName();
             }
             else {
                 tableName = entityClazz.getAnnotation(DbTable.class).value();
@@ -274,11 +274,16 @@ public class BaseDao<T> implements IBaseDao<T>{
             if (!columnName.equals("_id")){
                 switch (field.getType().getSimpleName()){
                     case "int":
+                    case "Integer":
                         strBuilder.append(columnName+" INTEGER,");
                         break;
                     case "String":
                     case "double":
+                    case "Double":
+                    case "float":
+                    case "Float":
                     case "byte":
+                    case "long":
                     case "Long":
                         strBuilder.append(columnName+" TEXT,");
                         break;
